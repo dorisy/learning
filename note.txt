@@ -1,0 +1,43 @@
+这些设置是基于先完成了团队游的git配置后。为了便于学习，需要配置一个私人的环境。比如自己的github仓库
+1、首先为github账户生成SSH Key：
+$ ssh-keygen -t rsa -C "your-email-address"
+然后将生成的.pub文件里的内容添加到github的SSH设置里。
+2、然后把rsa加到SSH agent上，由于不是使用默认的.ssh/id_rsa,所以需要指明新的rsa路径：
+    ssh-add ~/.ssh/github.rsa
+    这个命令有可能会被拒绝，可以先用这个命令：ssh-agent bash
+   然后继续使用这个命令： ssh-add ~/.ssh/github.rsa
+   可以用ssh-add -l 来确认结果
+3、接下来配置.ssh/config 文件
+HOST *.ctripcorp.com
+
+ IdentityFile ~/.ssh/id_rsa/qsyang.rsa.ctrip
+ User qsyang
+HOST *.github.com
+ IdentityFile ~/.ssh/github.rsa
+ User dorisy
+
+4、下一步就可以去自己的github仓库拉代码了，如果仓库里什么都没有的话，貌似拉取会失败
+git clone ssh_addr
+5、代码拉取到本地后，可以尝试添加什么的了
+    git add xxx
+    git commit xxx
+    git push origin master
+6、自行去仓库检阅代码(*^__^*) 
+7、填坑：
+    出现这个错误：push 的时候出现connect to host github.com port 22: Bad file number，需要修改config的配置，增加一个ssh.github.com对应的443端口
+ HOST ssh.github.com
+ IdentityFile ~/.ssh/github.rsa
+ User dorisy
+ port 443
+8、补充：
+ git status:查看文件修改状态
+git diff:查看文件修改内容
+本地仓库推送到远程空仓库：git remote add origin git@github.com:dorisy/learngit.git
+若远程仓库不为空，则需要先从远程仓库clone下来： git clone git@github.com:dorisy/css3-menu-personal.git
+
+参考了各方资源：
+http://www.cnblogs.com/peterzd/archive/2012/04/22/2465230.html
+http://www.tuicool.com/articles/zqa6Rz
+
+     
+
