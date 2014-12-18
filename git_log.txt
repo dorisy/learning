@@ -82,4 +82,13 @@ $ git log --pretty="%h - %s" --author=gitster --since="2008-10-01" \
 使用图形化工具查阅提交历史:gitk
 
 
-git tag的使用说明
+git tag的使用说明：
+git tag tagname：给最后一次commit打tag
+git tag tagname commit_id:给指定的commit_id打标签
+打完标签用git tag ：命令查看本地打的标签
+本地tag推送到远程：git push origin tagname
+推送本地所有tag到远程：git push origin --tags
+删除本地未推送到远程的tag：git tag -d tagname
+删除推送到远程的tag：
+					先从本地删除：git tag -d tagname
+					然后从远程删除：git push origin :refs/tags/tagname
