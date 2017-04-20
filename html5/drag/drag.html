@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head></head>
+<body>
+	<div class="dropzone">
+	    <div id="draggable" draggable="true" >
+	        This div is draggable.
+	        dragenter 和dragleave指的是拖拽对象经过其他具体元素时触发的事件
+	    </div>
+	</div>
+	<p>dragenter</p>
+	<div class="dropzone"></div>
+	<div class="dropzone"></div>
+
+	<div class="dropzone"></div>
+
+	<style>
+	  #draggable {
+	    width: 200px;
+	    height: 100px;
+	    text-align: center;
+	    background: white;
+	    background: #999;
+	    color: #fff;
+	  }
+
+	  .dropzone {
+	    width: 200px;
+	    height: 100px;
+	    background: "blueviolet";
+	    margin-bottom: 10px;
+	    padding: 10px;
+	  }
+	</style>
+
+	<script type="text/javascript">
+	var dragged;
+
+	  /* events fired on the draggable target */
+	  document.addEventListener("drag", function( event ) {
+
+	  }, false);
+
+	  document.addEventListener("dragstart", function( event ) {
+	      // store a ref. on the dragged elem
+	      var obj={"key":"dataTransfer","value":"dataTransfer存放了拖拽操作中的相关数据"}
+	      event.dataTransfer.setData('text/plain',JSON.stringify(obj));//dataTransfer存放了拖拽操作中的相关数据
+	      dragged = event.target;
+	      // make it half transparent
+	      event.target.style.opacity = .5;
+	  }, false);
+
+	  document.addEventListener("dragend", function( event ) {
+	  		console.log(event.target,":end",event.dataTransfer.getData("text/plain"));
+	      // reset the transparency
+	      event.target.style.opacity = "";
+	  }, false);
+
+	  /* events fired on the drop targets */
+	  document.addEventListener("dragover", function( event ) {
+	      // prevent default to allow drop
+	      event.preventDefault();
+	  }, false);
+
+	  document.addEventListener("dragenter", function( event ) {
+	  	console.log( event.target,":enter",event.dataTransfer.getData("text/plain"));
+	      // highlight potential drop target when the draggable element enters it
+	      if ( event.target.className == "dropzone" ) {
+	          event.target.style.background = "purple";
+	      }
+
+	  }, false);
+
+	  document.addEventListener("dragleave", function( event ) {
+	  	console.log( event.target,":leave",event.dataTransfer.getData("text/plain"));
+	      // reset background of potential drop target when the draggable element leaves it
+	      if ( event.target.className == "dropzone" ) {
+	          event.target.style.background = "";
+	      }
+
+	  }, false);
+
+	  document.addEventListener("drop", function( event ) {
+	      // prevent default action (open as link for some elements)
+	      event.preventDefault();
+	      console.log( event.target,":drop");
+	      // move dragged elem to the selected drop target
+	      if ( event.target.className == "dropzone" ) {
+	          event.target.style.background = "";
+	          dragged.parentNode.removeChild( dragged );
+	          dragged.innerHTML=JSON.parse(event.dataTransfer.getData("text/plain")).value;
+	          event.target.appendChild( dragged );
+	      }
+	    
+	  }, false);
+	</script>
+</body>
+</html>

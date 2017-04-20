@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>原生web组件</title>
+		<style type="text/css">
+		input[type=range].custom{
+			-webkit-appearance: none;  
+   			background-color: Red;  
+    		width: 200px; 
+		}
+		input[type=range].custom::-webkit-slider-thumb { 
+		    -webkit-appearance: none; 
+		    background-color: Green; 
+		    opacity: 0.5; 
+		    width: 10px; 
+		    height: 10px; 
+		} 
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+		/*var MyElement =	document.register('my-element', {
+			prototype: Object.create(HTMLElement.prototype, {
+			createdCallback: {
+				value: function() {
+					var shadow = this.createShadowRoot();
+						shadow.innerHTML = '<h1>SHADOW DOM!</h1>';
+					}
+				}
+			})
+			});
+		console.log(document);*/
+	
+		</script>
+		<my-element>
+
+这是一个轻量级 DOM。
+
+<i>hello</i>
+
+<i>world</i>
+
+</my-element>
+	<span>I am not green</span>
+	<input id="foo" type="range" class="custom" onclick="alert('range'+ event.target)" /> 
+	</body>
+</html>

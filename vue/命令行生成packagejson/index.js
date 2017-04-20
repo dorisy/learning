@@ -1,0 +1,1 @@
+console.log("自动生成package.json")

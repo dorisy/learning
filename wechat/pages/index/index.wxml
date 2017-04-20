@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>
+<view class="btn-area navigator-btns ">
+  <navigator url="../meal/meal?title=navigate" hover-class="navigator-hover" class="navigator">爱心便当</navigator>
+  <navigator url="../pictures/pictures?title=navigate" open-type="navigate"  class="navigator" hover-class="other-navigator-hover">恩爱秀</navigator>
+  <navigator url="../health/health" class="navigator" hover-class="other-navigator-hover">健康❤</navigator>
+</view>

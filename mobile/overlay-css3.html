@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<style type="text/css">
+			.overlay {
+			  position: fixed;
+			  top: 0;
+			  right: 0;
+			  bottom: 0;
+			  left: 0;
+			  z-index: -1;
+			  background-color: rgba(0, 0, 0, 0.8);
+			}
+
+			.overlay.active {
+			  z-index: 980;
+			}
+
+			.modal {
+			  background-color: #fff;
+			  border-radius: 5px;
+			  margin: 10
+			  0px 10px;
+			  overflow: hidden;
+			  opacity: 0;
+			}
+			.modal.modal-in {
+			  opacity: 1;
+			}
+			.modal .modal-hd {
+			  text-align: center;
+			  line-height: 24px;
+			  background-color: #fff;
+			  color: #fff;
+			}
+			.modal .modal-bd {
+			  padding: 15px;
+			}
+			.modal .modal-ft {
+			  border-top: 1px solid gray;
+			}
+			.modal .modal-ft .btn-modal {
+			  background-color: #fefefe;
+			  text-align: center;
+			  line-height: 24px;
+			  color: blue;
+			}
+			.modal .modal-ft .btn-modal:first-child {
+			  border-right: 1px solid gray;
+			}
+			.modal .modal-ft .btn-modal:last-child {
+			  border-right: none;
+			}
+			.modal .modal-ft .btn-modal:hover, .modal .modal-ft .btn-modal:active {
+			  background-color: #d9d9d9;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="header"></header>
+		<div class="wrap-page">
+		    <section class="page">
+		    	<button id="showDiologe">显示弹窗</button>
+		    </section>
+		    ...
+		</div>
+		<footer class="footer"></footer>
+		<div class="overlay" style="display:none;" id="overlay">
+		    <section class="modal modal-in">
+		        <div class="modal-hd"></div>
+		        <div class="modal-bd">
+		        	<p>青，取之于蓝，而青于蓝；冰，水为之，而寒于水。故木受绳则直，金就砺则利，君子博学而日参省乎己，则知明而行无过矣。</p>
+		        </div>
+		        <div class="modal-ft"></div>
+		    </section>
+		</div>
+		<script type="text/javascript">
+		document.getElementById("showDiologe").onclick=function(){
+			document.getElementById("overlay").style.display="block";
+		}
+		</script>
+	</body>
+</html>

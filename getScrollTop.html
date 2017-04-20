@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+<style>
+    #text {
+        width: 200px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background: #000;
+        color: #fff;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+    p {
+        width:50px;
+        margin: 0 auto;
+    }
+</style>
+</head>
+
+<div id="text"></div>
+<p>
+    对于Pinterest这款APP，我希望自己能用得更频繁一些。尽管以下几个版面致力于设计、UI（用户界面）、UX（用户体验），但我却从没涉足过这个平台。且无视本人的缺乏接触，每天都有数以百万的人在使用Pinterest，在上面整理、计划、激发灵感、设计、建设和梦想。虽然市面上普遍有很多产品提供相同的功能，但能给用户带来这么多益处的产品并不多，我喜欢这点。
+Pinterest 成为了这么多用户的绝妙工具，与此同时，也在世界范围内传递着一些最佳设计。它拥有静谧、温和、谦逊的，横跨网页端和IOS移动端的用户界面，保持着不同寻常的风格，让用户关注他们自己的个人需求。在这篇设计细节的分析文中，我将研究一下IOS Pinterest里几处精妙的交互——看文吧！
+
+  一、启动画面
+
+  我很乐于开始探索不同APP的登录体验。对于设计师来说，登录和激活用户是一件极其微妙又充满挑战的事情。为新用户去理解并改善产品体验是一个永不止息的过程。我很欣赏Pinterest在他们崭新的用户体验上所做的一切——APP和网站都很棒。
+
+Pinterest的重点全在“受益”上，跟功能没有半毛钱关系。他们不会提钉图、分享、社交媒体等等，绝不！他们只谈论人们是怎么使用APP解决生活中实实在在的挑战或问题的。启动画面上，平移的图像加上简单的价值表述，就达到了引人注目的（且激发兴趣的）用户体验。
+</p>
+
+<script>
+
+window.onload = function() {
+    function getScrollTop(){  
+        var scrollTop = 0;  
+        var doc = document.documentElement;
+        var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
+        var scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+
+        return scrollTop;  
+    }
+
+    if(window.addEventListener) {
+        window.addEventListener("scroll", function() {
+            document.getElementById("text").innerHTML = getScrollTop();
+        });
+    } else {
+         window.attachEvent ("onscroll", function() {
+            document.getElementById("text").innerHTML = getScrollTop();
+            console.log(getScrollTop())
+        });
+    }
+}
+</script>
+
+
+
+
+<a href="http://help.dottoro.com/ljnvjiow.php">相关介绍</a>

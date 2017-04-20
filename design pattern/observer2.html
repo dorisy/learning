@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+    <head>
+         <meta charset="utf-8">
+         <title>observer</title>
+         <style type="text/css">
+            table{
+                border-collapse: collapse;
+               
+                font-family: "微软雅黑";
+                width: 500px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            tr,td,th{
+              border: 1px solid #ccc;  
+            }
+            td[data-ref]{
+                text-align: left;
+            }
+            ul li{
+                font-family: "微软雅黑";
+                list-style: none;
+                line-height: 24px;
+            }
+         </style>
+    </head>
+    <body>
+        <h1>我的订阅</h1>
+        <div id="main">
+            <table>
+                <thead>
+                    <tr>
+                        <th>订阅名称</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>订阅1</td>
+                        <td data-ref="example1"><button class="subscribe">订阅</button><button class="unsubscribe">取消订阅</button><button class="publish">发布</button></td>
+                    </tr>
+                    <tr>
+                        <td>订阅2</td>
+                        <td data-ref="example2"><button class="subscribe">订阅</button><button class="unsubscribe">取消订阅</button><button class="publish">发布</button></td>
+                    </tr>
+                    <tr>
+                        <td>订阅3</td>
+                        <td data-ref="example3"><button class="subscribe">订阅</button><button class="unsubscribe">取消订阅</button><button class="publish">发布</button></td>
+                    </tr>
+                    <tr>
+                        <td>订阅4</td>
+                        <td data-ref="example4"><button class="subscribe">订阅</button><button class="unsubscribe">取消订阅</button><button class="publish">发布</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul id="content"></ul>
+        </div>
+        <script type="text/javascript" src="../loveletter/loveletter/js/jquery.js"></script>
+        <script type="text/javascript">
+            //通用代码
+            var observer = {
+                //订阅
+                addSubscriber: function (callback) {
+                    this.subscribers[this.subscribers.length] = callback;
+                },
+                //退订
+                removeSubscriber: function (callback) {
+                    for (var i = 0; i < this.subscribers.length; i++) {
+                        if (this.subscribers[i] === callback) {
+                            delete (this.subscribers[i]);
+                        }
+                    }
+                },
+                //发布
+                publish: function (what) {
+                    for (var i = 0; i < this.subscribers.length; i++) {
+                        if (typeof this.subscribers[i] === 'function') {
+                            this.subscribers[i](what);
+                        }
+                    }
+                },
+                // 将对象o具有观察者功能
+                make: function (o) { 
+                    for (var i in this) {
+                        o[i] = this[i];
+                        o.subscribers = [];
+                    }
+                }
+            };
+           var blogger = {
+               recommend: function (id) {
+                   var msg = 'dudu 推荐了的帖子:' + id;
+                   this.publish(msg);
+               }
+           };
+
+           var user = {
+               vote: function (id) {
+                   var msg = '有人投票了!ID=' + id;
+                   this.publish(msg);
+               }
+           };
+
+           observer.make(blogger);
+           observer.make(user);
+           var tom = {
+               read: function (what) {
+                   console.log('Tom看到了如下信息：' + what)
+               }
+           };
+
+           var mm = {
+               show: function (what) {
+                   console.log('mm看到了如下信息：' + what)
+               }
+           };
+           // 订阅
+           blogger.addSubscriber(tom.read);
+           blogger.addSubscriber(mm.show);
+           blogger.recommend(123); //调用发布
+
+           //退订
+           blogger.removeSubscriber(mm.show);
+           blogger.recommend(456); //调用发布
+
+           //另外一个对象的订阅
+           user.addSubscriber(mm.show);
+           user.vote(789); //调用发布
+    </script>
+    </body>
+</html>

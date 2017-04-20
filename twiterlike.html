@@ -1,0 +1,77 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Twitter Like</title>
+<style type="text/css">
+.heart {
+   cursor: pointer;
+   height: 50px;
+   width: 50px;
+   background-image:url('https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png');
+   background-position: left;
+   background-repeat:no-repeat;
+   background-size:2900%;
+}
+@keyframes heart-burst {
+  from {background-position:left;}
+  to { background-position:right;}
+}
+@-moz-keyframes heart-burst {
+  from {background-position:left;}
+  to { background-position:right;}
+}
+@-webkit-keyframes heart-burst {
+  from {background-position:left;}
+  to { background-position:right;}
+}
+
+@-o-keyframes heart-burst {
+  from {background-position:left;}
+  to { background-position:right;}
+}
+.is_animating {
+  animation: heart-burst .8s steps(28) 1;
+  -moz-animation: heart-burst .8s steps(28) 1;
+  -webkit-animation: heart-burst .8s steps(28) 1;
+  -o-animation: heart-burst .8s steps(28) 1;
+}
+</style>
+
+</head>
+<body>
+<h1>Twitter Like</h1>
+<div class="heart" id="js_like"></div>
+<strong>TIPS:实际用的时候最好把heart的position设置为absolute;因为设置background-position会引起重绘,设置成绝对定位的话,可以避免影响到上下文.</strong>
+<p><copyright>著作权归作者所有。
+商业转载请联系作者获得授权，非商业转载请注明出处。
+作者：kmokidd
+链接：http://zhuanlan.zhihu.com/FrontendMagazine/20486738
+来源：知乎</copyright></p>
+<script type="text/javascript">
+    var likeBtn = document.getElementById('js_like');
+    likeBtn.onclick=function (argument) {
+        if(this.getAttribute('class').indexOf('is_animating')!=-1){//当前有动画
+            this.setAttribute('class','heart');
+        }else{
+            this.setAttribute('class','heart is_animating');
+        }
+    }
+    //返回数组的前n个元素
+    function first(array,n){
+      if(array == null || typeof array !== "Array" ) return void 0;
+      if(!n) return array[0];
+      return array.slice(0,n);
+    }
+
+    function initial(array,n){
+      n = n||1;
+      if(array == null || typeof array !== "Array" ) return void 0;
+      return array.slice(0,Math.max(0,array.length-n));
+    }
+    //返回数组的最后n个元素
+    function last(array,n){
+      if(array == null || typeof array !== "Array" ) return void 0;
+      return array.slice(Math.max(array.length - n,0));
+    }
+</script>
+</body>
+</html>

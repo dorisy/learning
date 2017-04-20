@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ARC参数说明</title>
+		<style type="text/css">
+		#arc{
+			/*width: 500px;
+			height: 600px;*/
+			border: 1px solid #ccc;
+		}
+		</style>
+	</head>
+	<body>
+		<canvas id="arc" width="500" height="600"></canvas>
+		<canvas id="rect" width="500" height="600"></canvas>
+		<canvas id="scale" width="500" height="600"></canvas>
+		<script type="text/javascript">
+			var canvas=document.getElementById("arc"),
+				context=canvas.getContext("2d"),
+				canvas2=document.getElementById("rect"),
+				context2=canvas2.getContext("2d"),
+				canvas3=document.getElementById("scale"),
+				context3=canvas3.getContext("2d");
+			context.beginPath();
+			context.fillStyle = "red";
+			context.strokeStyle="blue";
+			context.arc(100,100,100,0,Math.PI*2,false);
+			context.moveTo(500,100); 
+			context.arcTo(100,200,250,500,100);
+			context.clip();
+			context.closePath();
+			context.fill();//实心圆
+			context.stroke();//空心圆
+			//alert(context.isPointInPath(100,300));//判断坐标是否在路径里
+
+			context2.beginPath();
+			context2.fillStyle = "red";
+			context2.strokeStyle="red";
+			context2.rotate(30*Math.PI/180);//rotate顺序要在rect之前，即在绘出路径之前调用
+			//canvas的转换不是针对整个canvas的，而是针对调用转换方法之后绘制的shapes 或 paths
+			//context2.translate(150, 60)
+			context2.scale(2,3);//放大，参数分别表示水平方向和垂直方向的放大倍数
+			context2.rect(100,10,100,100);
+			context2.stroke();
+			//context2.strokeRect(10,10,100,100);
+			context2.closePath();
+
+			context3.translate(160, 30); //平移
+			context3.fillStyle = 'rgba(120,93,222,0.25)'; //填充
+			context3.fillRect(0, 0, 100, 50)
+
+			for (var i = 0; i < 50; i++) {
+				context3.translate(25, 25); //平移
+				context3.scale(0.95, 0.95); //扩大。所有的方法包括扩大，他们的对象都是针对后面要画出的图形，而非canvas画布。因此后面的fillRecr函数画的矩形的宽仍然是100，高仍然是50.这里相当于把这个矩形扩大为原来的0.95倍。
+				context3.rotate(Math.PI / 10); //旋转。
+				context3.fillRect(0, 0, 100, 50); //画矩形 这里仍然是画（0,0,100,50）
+			}
+
+		</script>
+	</body>
+</html>

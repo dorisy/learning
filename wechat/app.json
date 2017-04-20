@@ -1,0 +1,15 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/meal/meal",
+    "pages/pictures/pictures",
+    "pages/health/health"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "YoungForLove",
+    "navigationBarTextStyle":"black"
+  }
+}

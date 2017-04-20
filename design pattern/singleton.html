@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+	<head>
+		 <meta charset="utf-8">
+		 <title>SINGLETON</title>
+	</head>
+	<body>
+		<p>
+			<button id='singleBtn'>单例测试</button>
+			<input type='text' readonly id='singleton'>
+		</p>
+		<p>What is the difference bettween singleton-pattern and module-pattern</p>
+		<script type="text/javascript">
+			var SingleTon=(function(){
+				var instance;
+				function init(){
+					return {
+						property:'SingleTon',
+						method:function(){
+							console.log("test for SingleTon!");
+						}
+					}
+				}
+				return {
+					test:function(){//单例模式的核心是：只能被实例化一次。获取SingleTon的实例，如果存在就返回，不存在的话创建新的实例
+						if(!instance){
+							instance=init();
+						}
+						return instance;
+					}
+				}
+			})();
+
+			var singleBtn=document.getElementById('singleBtn'),
+				textarea=document.getElementById('singleton');
+			singleBtn.onclick=function(){
+				var obj=SingleTon.test();
+				var obj1=SingleTon.test();
+				console.log(obj===obj1);
+				textarea.value=obj.property;
+			}
+			var a = {
+				"b": 8,
+				"a": {
+					"b": 3,
+					"a": {
+						"b": 4,
+						"a": {
+							"b": 3
+						}
+					}
+				}
+			}
+			function recur(obj) {
+				var arr = [];
+				while (obj) {
+					console.log(obj);
+					arr.push(obj);
+					obj = obj.a;
+				}
+				return arr;
+			}
+			console.log(recur(a),"热cur");
+			self.tourGo('detail' + backParam, { "viewName": "detail" } , self);
+
+			self.tourBack(self, 'grouptravel', { "viewName": "grouptravel" })
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "vuetest",
+  "version": "1.0.0",
+  "description": "vue test",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js" //执行npm run test就相当于执行node index.js   (scripts之后配置的命令必须是可执行的,否则会报错)
+  },
+  "keywords": [
+    "vue"
+  ],
+  "author": "michael",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.2.4"
+  },
+  "devDependencies": {}
+}

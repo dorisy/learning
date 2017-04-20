@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>html5焦点管理</title>
+    <style type="text/css">
+    body,textarea{
+        font-family: "微软雅黑";
+        font-size: 12px;
+
+    }
+    textarea{
+        line-height: 24px;
+        width: 500px;
+        height: 200px;
+        margin-top: 20px;
+    }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    function init() {
+        function onMouseUp(e) {
+            var outputElement = document.getElementById('output-element');
+            var outputText = document.getElementById('output-text');
+            var selectedTextArea = document.activeElement;//焦点对象
+            var selection = selectedTextArea.value.substring(selectedTextArea.selectionStart, selectedTextArea.selectionEnd);//ie7，ie8取不到selectionStart和selectionEnd
+            outputElement.innerHTML = selectedTextArea.id;
+            outputText.innerHTML = selection;
+        }
+        document.getElementById("ta-example-one").onmouseup=function(e){onMouseUp(e);console.log(e.target,document.hasFocus());}
+        document.getElementById("ta-example-two").onmouseup=function(e){onMouseUp(e);console.log(e.target,document.hasFocus());}
+        document.getElementById("ta-example-two").onblur=function(){
+            console.log(document.hasFocus());
+        }
+    }
+    </script>
+</head>
+<body onload="init()">
+<div>
+    Select some text from one of the Textareas below:
+</div>
+<form id="frm-example" action="#" accept-charset="utf-8">
+<textarea name="ta-example-one" id="ta-example-one" rows="8" cols="40">
+在 HTML5 工作草案中，DOM 属性 activeElement 与方法 hasFocus() 为程序员提供了更好的控制页面交互的能力，特别是对于用户行为引发的交互。例如，它们都可以用于统计使用目的，跟踪页面特定链接的点击次数，计算元素获得焦点的次数等等。此外，当与 AJAX 技术结合以后，将会减少向服务器请求的数目，这取决于用户的活跃程度和页面的布局。
+</textarea>
+<textarea name="ta-example-two" id="ta-example-two" rows="8" cols="40">
+返回当前页面中获得焦点的元素,也就是说,如果此时用户按下了键盘上某个键,会在该元素上触发键盘事件.该属性是只读的.
+很多情况下,该属性会返回一个<input>或者<textarea>元素,于此同时,如果用户在文本输入框中选中了一些文本,还可以使用该元素的selectionStart和selectionEnd属性获得准确的选中文本内容.
+该属性的值还可能是一个<select>元素(下拉菜单)或者type属性为button,checkbox或radio的<input>元素.
+document.hasFocus():返回一个布尔值,表明当前文档或者当前文档的子节点是否获得了焦点. 该方法可以用来判断当前文档中的活动元素是否获得了焦点.
+注意:当查看一个文档时, 当前文档中获得焦点的元素一定是当前文档的活动元素.但一个文档中的活动元素不一定获得了焦点. 例如, 一个在后台的窗口中的活动元素一定没有获得焦点.
+</textarea>
+</form>
+Active Element Id: <span id="output-element"></span><br/>
+Selected Text: <span id="output-text"></span>
+
+</body>
+</html>

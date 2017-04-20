@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+	<title></title>
+</head>
+<body>
+<script>  
+ function CopyText(id)  
+ {  
+ //copyToClipboard(document.getElementById(id).value);  
+ copy(document.getElementById(id).value);  
+ }  
+   
+   function copy(text2copy) {  
+ if (window.clipboardData) {  
+ window.clipboardData.setData("Text",text2copy);  
+ } else {  
+ var flashcopier = 'flashcopier';  
+ if(!document.getElementById(flashcopier)) {  
+ var divholder = document.createElement('div');  
+ divholder.id = flashcopier;  
+ document.body.appendChild(divholder);  
+ }  
+ document.getElementById(flashcopier).innerHTML = '';  
+ var divinfo = '<embed src="_clipboard.swf" FlashVars="clipboard='+escape(text2copy)+'" width="0" height="0" type="application/x-shockwave-flash"></embed>';//这里是关键  
+ document.getElementById(flashcopier).innerHTML = divinfo;  
+ alert('Text copied');  
+ }  
+ }  
+   
+   function copyToClipboard(meintext)  
+ {  
+ if (window.clipboardData){  
+ //alert("ie");  
+ // the IE-manier  
+ window.clipboardData.setData("Text", meintext);  
+ // waarschijnlijk niet de beste manier om Moz/NS te detecteren;  
+ // het is mij echter onbekend vanaf welke versie dit precies werkt:  
+ }  
+ else if (window.netscape){  
+ // dit is belangrijk maar staat nergens duidelijk vermeld:  
+ // you have to sign the code to enable this, or see notes below  
+ try {  
+ netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
+ } catch (e) {  
+ alert("被浏览器拒绝！"); }      //\n请在浏览器地址栏输入'about:config'并回车\n然后将 'signed.applets.codebase_principal_support'设置为'true'  
+   
+   // maak een interface naar het clipboard  
+ var clip = Components.classes['@mozilla.org/widget/clipboard;1'].  
+ createInstance(Components.interfaces.nsIClipboard);  
+ if (!clip) return;  
+ //alert("mozilla");  
+ // maak een transferable  
+ var trans = Components.classes['@mozilla.org/widget/transferable;1'].  
+ createInstance(Components.interfaces.nsITransferable);  
+ if (!trans) return;  
+ // specificeer wat voor soort data we op willen halen; text in dit geval  
+ trans.addDataFlavor('text/unicode');  
+ // om de data uit de transferable te halen hebben we 2 nieuwe objecten  
+ // nodig om het in op te slaan  
+ var str = new Object();  
+ var len = new Object();  
+ var str = Components.classes["@mozilla.org/supports-string;1"].  
+ createInstance(Components.interfaces.nsISupportsString);  
+ var copytext=meintext;  
+ str.data=copytext;  
+ trans.setTransferData("text/unicode",str,copytext.length*2);  
+ var clipid=Components.interfaces.nsIClipboard;  
+ if (!clip) return false;  
+ clip.setData(trans,null,clipid.kGlobalClipboard);  
+ }  
+ alert("复制成功:" + meintext);  
+ return false;  
+ }  
+ </script>  
+   
+调用copyToClipboard(meintext)；  
+   
+meintext为传入参数。  
+ <input id='a' name='a' type='text'value='good' />  
+ <input name="" type="button" value='复制' onClick="copyToClipboard(a.value)">  
+   
+<a href="ums://aHR0cDovLzMyLmRjLmZ0bi5xcS5jb20vZnRuX2hhbmRsZXIvY2E1NGY4YzE3NTI5MzNiNzQ2NjU5ZmVmZjliNTUwZTM0NWNkMTVhNDg1Nzc4ODg5N2MxMWUyMjcwZDE3YjcxMGMwZGUxMmJlMGEyZTVhM2E1MTExMmE1Y2FlOTNmYjkwMGIxNmFkZWVjOGZiYmMxNThlNzg1YTRmNWRjMDdmZGIvQkJDJUU4JTkzJTlEJUU4JTg5JUIyJUU2JTk4JTlGJUU3JTkwJTgzMDgucmFyJjhjZDA3ZTUz" onClick="copyToClipboard(this.href)">01集</a>  
+
+</body>
+</html>

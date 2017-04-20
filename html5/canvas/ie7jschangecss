@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CANVAS</title>
+    <style type="text/css">
+        .color{
+            color:red;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .icon{
+            color:yellow;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="test">ie7测试</button>
+    <script type="text/javascript">
+    document.getElementById("test").onclick=function(){
+        var span=document.createElement("span"),
+            icon=document.createElement("i");
+        span.innerHTML="<span id='color'>ie7 bug 测试</span>";
+        span.setAttribute("class","color");
+        icon.innerHTML="yellow text";
+        icon.setAttribute("class","icon");
+        document.body.appendChild(span); 
+        document.body.appendChild(icon);
+    }
+    </script>
+</body>
+</html>

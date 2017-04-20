@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<style type="text/css">
+		#status {
+		  position : fixed;
+		  width: 100%;
+		  font : bold 1em sans-serif;
+		  color: #FFF:
+		  padding : 0.5em
+		}
+
+		#log {
+		  padding: 2.5em 0.5em 0.5em;
+		  font: 1em sans-serif;
+		}
+
+		.online {
+		  background: green;
+		}
+
+		.offline {
+		  background: red;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="status"></div>
+		<div id="log"></div>
+		<p>This is a test</p>
+
+		<script type="text/javascript">
+		window.addEventListener('load', function(e) {
+		  var status = document.getElementById("status");
+
+		  function updateOnlineStatus(event) {
+		    var condition = navigator.onLine ? "online" : "offline";
+
+		    status.className = condition;
+		    status.innerHTML = condition.toUpperCase();
+
+		    log.insertAdjacentHTML("beforeend", "Event: " + event.type + "; Status: " + condition);
+		  }
+		  function showStatus(event) {
+		    var condition = navigator.onLine ? "online" : "offline";
+
+		    status.className = condition;
+		    status.innerHTML = condition.toUpperCase();
+
+		    log.insertAdjacentHTML("beforeend", "Event: " + event.type + "; Status: " + condition);
+		  }
+		  showStatus(e);
+		  window.addEventListener('online',  updateOnlineStatus);
+		  window.addEventListener('offline', updateOnlineStatus);
+		});
+		</script>
+	</body>
+</html>

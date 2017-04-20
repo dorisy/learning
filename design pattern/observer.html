@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+    <head>
+         <meta charset="utf-8">
+         <title>observer</title>
+         <style type="text/css">
+            table{
+                border-collapse: collapse;
+               
+                font-family: "微软雅黑";
+                width: 500px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            tr,td,th{
+              border: 1px solid #ccc;  
+            }
+            td[data-ref]{
+                text-align: left;
+            }
+            ul li{
+                font-family: "微软雅黑";
+                list-style: none;
+                line-height: 24px;
+            }
+         </style>
+    </head>
+    <body>
+        <h1>我的订阅</h1>
+        <div id="main">
+            <table>
+                <thead>
+                    <tr>
+                        <th>订阅名称</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>订阅1</td>
+                        <td data-ref="example1"><button class="subscribe">订阅</button><button class="unsubscribe">取消订阅</button><button class="publish">发布</button></td>
+                    </tr>
+                    <tr>
+                        <td>订阅2</td>
+                        <td data-ref="example2"><button class="subscribe">订阅</button><button class="unsubscribe">取消订阅</button><button class="publish">发布</button></td>
+                    </tr>
+                    <tr>
+                        <td>订阅3</td>
+                        <td data-ref="example3"><button class="subscribe">订阅</button><button class="unsubscribe">取消订阅</button><button class="publish">发布</button></td>
+                    </tr>
+                    <tr>
+                        <td>订阅4</td>
+                        <td data-ref="example4"><button class="subscribe">订阅</button><button class="unsubscribe">取消订阅</button><button class="publish">发布</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul id="content"></ul>
+        </div>
+        <script type="text/javascript" src="../loveletter/loveletter/js/jquery.js"></script>
+        <script type="text/javascript">
+        var pubsub={};
+            (function (q) {
+                var topics = {}, // 回调函数存放的数组
+                    subUid = -1;
+                // 发布方法
+                q.publish = function (topic, args) {
+
+                    if (!topics[topic]) {
+                        return false;
+                    }
+
+                    setTimeout(function () {
+                        var subscribers = topics[topic],
+                            len = subscribers ? subscribers.length : 0;
+
+                        while (len--) {
+                            subscribers[len].func(topic, args);
+                        }
+                    }, 0);
+
+                    return true;
+
+                };
+                //订阅方法
+                q.subscribe = function (topic, func) {
+
+                    if (!topics[topic]) {
+                        topics[topic] = [];
+                    }
+
+                    var token = (++subUid).toString();
+                    topics[topic].push({
+                        token: token,
+                        func: func
+                    });
+                    return token;
+                };
+                //退订方法
+                q.unsubscribe = function (token) {
+                    console.log(token);
+                    console.log("退订方法");
+                    for (var m in topics) {
+                        if (topics[m]) {
+                            for (var i = 0, j = topics[m].length; i < j; i++) {
+                                if (topics[m][i].token === token) {
+                                    topics[m].splice(i, 1);
+                                    return token;
+                                }
+                            }
+                        }
+                    }
+                    return false;
+                };
+            } (pubsub));
+            $(".publish,.unsubscribe").hide();
+            //订阅
+            $(".subscribe").bind('click',function(){
+                var parent=$(this).closest("td"),
+                    name=parent.attr("data-ref"); 
+                parent.find(".unsubscribe,.publish").show();
+                $("#content").append("<li>您订阅了"+name);
+                var testSubscription = pubsub.subscribe(name, function (topics, data) {//订阅之后，将监听对象的对话
+                    /*以下代码在发布的时候会执行，即观察到变化了才会执行*/
+                    $("#content").append("<li>"+topics + "发布: " + data);
+                });
+                parent.attr("data-sid",testSubscription);
+            });
+            //取消订阅
+            $(".unsubscribe").bind('click',function(){
+                 if(confirm("确定取消订阅吗？")){
+                    var parent=$(this).closest("td"),
+                        id=parent.attr("data-sid"),
+                        name=parent.attr("data-ref");
+                    pubsub.unsubscribe(id);
+                    $("#content").append("<li>您取消了订阅"+name);
+                    parent.find(".publish,.unsubscribe").hide().find(".subscribe").show();
+                }
+            });
+            //发布
+            $(".publish").bind('click',function(){
+                var parent=$(this).closest("td"),
+                    name=parent.attr("data-ref"),
+                    content=prompt("输入发布内容");
+                pubsub.publish(name,content||"默认发布");
+                parent.find(".publish,.unsubscribe,.subscribe").show();
+            })
+    </script>
+    </body>
+</html>

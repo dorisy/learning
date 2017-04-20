@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CANVAS</title>
+    <style type="text/css">
+        .color{
+            color:red;
+        }
+        .icon{
+            color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="100" height="100" id="canvas2" style="display: block;margin: 100px auto";>你的游览器不支持canvas</canvas>
+
+	<canvas width="700" height="300" id="canvas" style="display: block;margin: 100px auto";>你的游览器不支持canvas</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');     
+		var ctx = canvas.getContext('2d');
+        var ctx2=document.getElementById('canvas2').getContext('2d');
+		//设置线宽，颜色（我喜欢通俗的称他为空心画法）
+        ctx2.lineWidth = 2;
+        //笑脸
+        ctx2.strokeStyle = '#ff0000';
+       //arc是花弧形，如果用fill的画法的话，会把他封闭起来。
+        ctx2.beginPath();
+        ctx2.arc(60, 50, 30, 0.5 * Math.PI, 1 * Math.PI);
+        ctx2.stroke();//填充路径,fill用于画实心图
+        ctx2.closePath();
+        ctx2.beginPath();
+        ctx2.arc(60, 50, 30, 0.5 * Math.PI, 1 * Math.PI);
+        ctx2.closePath();
+        ctx2.stroke();
+        //计时的卡片
+        //定时器
+        var timeClear;
+        //定义一些数字
+        var arcNum = 0.02,
+            textNum = 1;
+
+        function load1(){
+
+            if(textNum >= 101){
+                return 0;
+            }
+
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#8CBEB4';
+
+            ctx.beginPath();
+            ctx.arc(400, 100, 100, (0.5 + arcNum - 0.02) * Math.PI, (0.5 + arcNum) * Math.PI);
+            ctx.stroke();
+            ctx.closePath();
+
+            //绘制里面的渐变颜色
+            var color = ctx.createLinearGradient(100, 100, 300, 400);
+            color.addColorStop(0, '#499989');
+            color.addColorStop(1, '#146582');
+
+            ctx.beginPath();
+            ctx.fillStyle = color;
+            ctx.arc(400, 100, 99, (0.5 - arcNum/2)* Math.PI, (0.5 + arcNum/2) * Math.PI);
+            ctx.fill();
+            ctx.closePath();
+
+            //绘制文本
+            ctx.font="80px Arial";
+            ctx.fillStyle = "#fff";
+            ctx.textAlign = "center";
+            ctx.beginPath();
+            ctx.fillText(textNum, 395, 130 , 124);
+            ctx.closePath();
+            arcNum = arcNum + 0.02;
+            textNum = textNum + 1;
+        }
+
+        timeClear = setInterval(load1, 60);
+	</script>
+</body>
+</html>

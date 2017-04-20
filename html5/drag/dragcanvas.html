@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+		.drag{
+			width: 100px;
+			height: 100px;
+			background: #333;
+			color:#fff;
+			position: absolute;
+		}
+		#canvas{
+			border:1px solid #eee;
+		}
+		</style>
+	</head>
+	<body>
+		<div draggable="true" class="drag" id="drag">拖拽测试</div>
+		<canvas id="canvas" width="800" height="800"></canvas>
+		<video id="video" autoplay=""	></video>
+		<input type="file" id="take-picture" accept="image/*">
+		<script type="text/javascript">
+		var drag=document.getElementById('drag');
+		var x0=0,y0=0;
+		var canvas=document.getElementById("canvas"),
+			context=canvas.getContext("2d");
+		context.lineWidth=2;
+		context.strokeStyle="#ccc";
+		document.onmousedown=function(event){
+			if(event.target.id!="drag"){
+				context.lineWidth=2;
+				context.strokeStyle="#ccc";
+				var flag=true;
+				context.beginPath();
+				x0=event.pageX;
+				y0=event.pageY;
+				context.moveTo(x0,y0);
+				document.onmousemove=function(event){
+					if(flag){
+						var	x=event.pageX,
+							y=event.pageY;
+						context.lineTo(x,y);
+						context.stroke();
+					}
+				}
+				document.onmouseup=function(event){
+					flag=false;
+				}
+			}
+		}
+		/*以下是拖拽代码*/
+		var flag2=false,x1,y1;
+		drag.ondragstart=function(event){
+			x1=event.pageX;
+			y1=event.pageY;
+			flag2=true;
+		    event.dataTransfer.setData('text/plain',null);//dataTransfer存放了拖拽操作中的相关数据
+		}
+		drag.ondragend=function(e){
+			var	x=e.pageX,
+				y=e.pageY;
+			context.beginPath();
+			context.lineWidth=3;
+			context.strokeStyle="green";
+			context.moveTo(x1,y1);
+			context.lineTo(x,y);
+			context.stroke();
+			flag2=false;
+			drag.style.left=e.pageX+50+'px';
+			drag.style.top=e.pageY+50+'px';
+		}
+		</script>
+	</body>
+</html>

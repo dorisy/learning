@@ -1,0 +1,15 @@
+body			{ background:#3B4D61 url(http://pushingpixels.at/experiments/dynamic_shadow/bg.jpg) repeat 0 0; margin:0; padding:0; }
+h1				{ font:bold 35px Tahoma, Helvetica, Arial, Sans-Serif; text-align:center; color:#1F2F3F; text-shadow:0px 2px 2px #74818F; }
+h2, a#home,
+a#tutorial		{ display:block; font:bold 15px/10px Tahoma, Helvetica, Arial, Sans-Serif; text-align:center; }
+h2				{ color:#D1D8DF; }
+a#home,
+a#tutorial		{ text-decoration:none; font-size:11px; font-weight:300; padding-bottom:14px; color:#6F777F; z-index:999; }
+a#home:hover,
+a#tutorial:hover{ color:#BFDEFF; }
+
+#switch			{ position:absolute; width:80px; height:120px; bottom:50px; left:50px; background:url(http://pushingpixels.at/experiments/dynamic_shadow/light-switch.png) no-repeat -80px 0; cursor:pointer; z-index:100; }
+#light-bulb		{ position:absolute; width:150px; height:150px; top:20%; left:70%; background:url(http://pushingpixels.at/experiments/dynamic_shadow/lightbulb.png) no-repeat -150px 0; cursor:move; z-index:800; }
+#light-bulb2	{ width:150px; height:150px; background:url(http://pushingpixels.at/experiments/dynamic_shadow/lightbulb.png) no-repeat 0 0; cursor:move;}
+#logo			{ position:absolute; width:450px; height:150px; top:40%; left: 30%; background:url(http://pushingpixels.at/experiments/dynamic_shadow/logo.png) no-repeat 0 0; cursor:move; z-index:700; }
+#logosh			{ position:absolute; width:450px; height:150px; top:40.5%; left: 29.5%; background:url(http://pushingpixels.at/experiments/dynamic_shadow/logo-shadow.png) no-repeat 0 0; z-index:600; }

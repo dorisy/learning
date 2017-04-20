@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Calendar</title>
+<style type="text/css">
+.box{
+	margin-bottom:2em;
+	width:520px;
+	padding:5px 5px 2em;
+	border:1px solid #ccc;
+}
+h2{
+	font-size: 12px;
+	margin:1em 0;
+}
+input{
+	margin:5px;
+}
+
+
+.inputSel{color:gray;}
+</style>
+</head>
+<body>
+<div class="box">
+	<form action="notice.demo.noticeform.src.php" method="post">
+		<h2>提示文字</h2>
+		<label >姓名：</label><input type="text" value="" id="name" name="name" /><br/>
+		<label >联系方式：</label><input type="text" value="" id="telephone" name="telephone"/><br/>
+		<input type="submit" value="提交" /><br/>
+	</form>
+	
+</div>
+
+
+<script src="http://webresource.c-ctrip.com/code/cquery/LABjs/LAB.js" charset="utf-8" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+$LAB.script({ src: "http://webresource.c-ctrip.com/code/cquery/cQuery_110421.js", charset: "utf-8" }).wait(function(){
+    $.mod.load('notice', '1.0', function(){
+    		$("#name").regMod("notice", "1.0", {
+			name: "name",
+			tips: "请输入英文姓名",
+			selClass: "inputSel"
+		}, true);
+		$("#telephone").regMod("notice", "1.0", {
+			name: "telephone",
+			tips: "请输入11位的手机号",
+			selClass: "inputSel"
+		}, true);
+    });
+});
+
+
+</script>
+</body>
+</html>

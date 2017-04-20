@@ -1,0 +1,356 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	<style type="text/css">
+	
+	#sun {
+		background: #ffd630;
+		width: 130px;
+		height: 130px;
+		position: absolute;
+		border-radius: 70px;
+		z-index: 2;
+		bottom: 0;
+		left: 340px;
+	}
+	#sun.animate {
+		-webkit-animation-name: sunrise;
+		-webkit-animation-duration: 10s;
+		-webkit-animation-timing-function: ease;
+		-webkit-animation-iteration-count: 1;	
+		-webkit-animation-direction: normal;
+		-webkit-animation-delay: 0;
+		-webkit-animation-play-state: running;
+		-webkit-animation-fill-mode: forwards;
+	}
+
+	@-webkit-keyframes sunrise {
+
+		0% {
+			bottom: 0;
+			left: 900px;
+			background: #f00;
+		}
+		
+		33% {
+			bottom: 700px;
+			left: 900px;
+			background: #ffd630;
+		}
+
+		66% {
+			bottom: 700px;
+			left: 40px;
+			background: #ffd630;
+		}
+		75% {
+			bottom: 700px;
+			left: 40px;
+			background: #ffd630;
+		}
+		85% {
+			bottom: 700px;
+			left: 40px;
+			background: #ffd630;
+		}
+
+		100% {
+			bottom: 0;
+			left: 40px;
+			background: #f00;
+		}
+
+	}
+	#sky {
+		width: 1200px;
+		height: 900px;
+		position: relative;
+		z-index: 1;
+		overflow: hidden;
+		background-color: #525252;
+		margin: 0  auto;
+	}
+	#sky.animate {
+		-webkit-animation-name: sky;
+		-webkit-animation-duration: 10s;
+		-webkit-animation-timing-function: ease;
+		-webkit-animation-iteration-count: 1;	
+		-webkit-animation-direction: normal;
+		-webkit-animation-delay: 0;
+		-webkit-animation-play-state: running;
+		-webkit-animation-fill-mode: forwards;
+	}
+
+	@-webkit-keyframes sky {
+
+		0% {
+			background-color: #000;
+		}
+		
+		33% {
+			background-color: #6293e5;
+		}
+
+		66% {
+			background-color: #6293e5;
+		}
+
+		100% {
+			background-color: #000;
+		}
+
+	}
+	#ground {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 154px;
+		background: #6c5228;
+		z-index: 4;
+	}
+
+	#ground.animate {
+		-webkit-animation-name: ground;
+		-webkit-animation-duration: 10s;
+		-webkit-animation-timing-function: ease;
+		-webkit-animation-iteration-count: 1;	
+		-webkit-animation-direction: normal;
+		-webkit-animation-delay: 0;
+		-webkit-animation-play-state: running;
+		-webkit-animation-fill-mode: forwards;
+	}
+
+	@-webkit-keyframes ground {
+
+		0% {
+			background: #eee;
+		}
+		
+		33% {
+			background: #48a037;
+		}
+
+		66% {
+			background: #48a037;
+		}
+
+		100% {
+			background: #eee;
+		}
+
+	}
+	#cloud {
+		position: relative;
+		top: 50px;
+		left: -100px;
+		opacity: 0;
+		z-index: 3;
+	}
+
+	#cloud.animate {
+		-webkit-animation-name: cloud;
+		-webkit-animation-duration: 12s;
+		-webkit-animation-timing-function: ease;
+		-webkit-animation-iteration-count: 1;	
+		-webkit-animation-direction: normal;
+		-webkit-animation-delay: 0;
+		-webkit-animation-play-state: running;
+		-webkit-animation-fill-mode: forwards;
+	}
+
+	@-webkit-keyframes cloud {
+
+		0% {
+			opacity: 0;
+			left: -100px;
+		}
+		
+		50% {
+			opacity: 1;
+		}
+		
+		75% {
+			opacity: 1;
+			left: 100px;
+		}
+		
+		100% {
+			opacity: 0;
+			left: 500px;
+		}
+
+	}
+	.cloud {
+		border-radius: 90px / 30px;
+		width: 160px;
+		height: 50px;
+		background: #fff;
+		position: absolute;
+		top: 10px;
+	}
+
+	.cloud-2 {
+		left: 50px;
+		top: 0;
+	}
+
+	.cloud-3 {
+		left: 110px;
+		top: 20px;
+
+	}
+
+	#moon {
+		position: relative;
+		opacity: 0;
+		top: 50px;
+		left: -100px;
+	}
+	.moon {
+		width: 100px;
+		height: 100px;
+		border-radius: 50px;
+		background: #fff;
+		position: absolute;
+	}
+	
+	.moon-2 {
+		background: #000;
+		position: absolute;
+		top: -20px;
+		left: 20px;
+	}
+	#moon.animate {
+		-webkit-animation-name: moon;
+		-webkit-animation-duration: 10s;
+		-webkit-animation-timing-function: ease;
+		-webkit-animation-iteration-count: 1;
+		-webkit-animation-direction: normal;
+		-webkit-animation-delay: 0;
+		-webkit-animation-play-state: running;
+		-webkit-animation-fill-mode: forwards;
+	}
+
+	@-webkit-keyframes moon {
+
+		0% {
+			opacity: 0;
+			left: -100px;
+		}
+		
+		50% {
+			opacity: 0;
+			left: -100px;
+		}
+		
+		90% {
+			opacity: 0;
+			left: -100px;
+		}
+		
+		100% {
+			opacity: 1;
+			left: 50px;
+		}
+
+	}
+	.star{
+		background: url(images/star.jpg) no-repeat;
+		position: absolute;
+		width:40px;
+		height: 40px;
+		left: 170px;
+		top: 10px; 
+	}
+	@-webkit-keyframes stars{
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@-webkit-keyframes stars1{
+		0% {
+			opacity: 0;
+		}
+		
+		100% {
+			opacity: 1;
+		}
+	}
+	@-webkit-keyframes stars2{
+		0% {
+			opacity: 0;
+		}
+		
+		
+		100% {
+			opacity: 1;
+		}
+	}
+	.star1{
+		left:250px;
+		top: 20px;
+		-webkit-animation-name: stars;
+		-webkit-animation-duration: 2s;
+		-webkit-animation-timing-function: ease;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: normal;
+		-webkit-animation-delay: 0;
+		-webkit-animation-play-state: running;
+		-webkit-animation-fill-mode: forwards;
+	}
+	.star2{
+		left: 290px;
+		top: -10px;
+		-webkit-animation-name: stars1;
+		-webkit-animation-duration: 3s;
+		-webkit-animation-timing-function: ease;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: normal;
+		-webkit-animation-delay: 0;
+		-webkit-animation-play-state: running;
+		-webkit-animation-fill-mode: forwards;
+	}
+	.star3{
+		top: 25px;
+		-webkit-animation-name: stars2;
+		-webkit-animation-duration: 3s;
+		-webkit-animation-timing-function: ease;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: normal;
+		-webkit-animation-delay: 1;
+		-webkit-animation-play-state: running;
+		-webkit-animation-fill-mode: forwards;
+	}
+	</style>
+	</head>
+	<body>
+		 <div id="sky" class="target animate">
+			<div id="cloud" class="target animate">
+				<div class="cloud cloud-1"></div>
+				<div class="cloud cloud-2"></div>
+				<div class="cloud cloud-3"></div>
+			</div>
+
+			<div id="sun" class="target animate"></div>
+
+			<div id="moon" class="target animate">
+				<div class="moon">
+				</div>
+				<div class="moon moon-2 animate">
+				</div>
+				<div class="star star1"></div>
+				<div class="star star2"></div>
+				<div class="star star3"></div>
+			</div>
+
+			<div id="ground" class="target animate"></div>
+
+		</div><!-- #sky -->
+
+	</body>
+</html>

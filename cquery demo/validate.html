@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>携程旅行网</title>
+<link rel="stylesheet" href="http://prototype.ui.sh.ctriptravel.com/code_beta/weixj/cQuery/demo/lazyLoad/demos.css" type="text/css" />
+<script type="text/javascript" src="http://webresource.c-ctrip.com/code/cquery/cQuery_110421.js" charset="utf-8"></script>
+<script>	
+$.ready(function () {
+	$.mod.load('validate','1.1',function(){
+		var ins = $(document).regMod('validate','1.1');
+		$("#text1").bind('blur',function () {
+			var self=$(this);
+			if($(this).value().length<3){//格式错误
+				ins.method("show",{
+					 $obj:self,//要显示校验的元素
+					 removeErrorClass:true,//隐藏后是否取消红色框
+					 data:"输入内容长度不得少于3"//显示的内容
+				});
+			}else{//格式正确
+				ins.method("hide");
+			}
+			
+		})
+	});
+}); 
+</script>
+<link rel="stylesheet" href="demos.css" type="text/css" />
+
+<style type="text/css"> 
+#container{
+	left:0;
+	top:0;
+	height: 100px;
+	width: 500px;
+	position: relative;
+	overflow: hidden;
+}
+
+</style>
+</head>
+<body>
+	<div id="holder">
+		<div id="content">
+			<h2 id="nav1-4">实例</h2>
+			<div id="container" > 
+				<input type="text" id="text1"/>
+				<p>
+				<input type="button" value="显示" id="show"/><input type="button" value="隐藏" id="hide"/>
+				</p>
+			</div>
+			
+			<h2 id="nav1-2">Options</h2>
+			
+			<h2 id="nav1-3">Methods</h2>
+			<dl class="options">
+				<dt><strong>show</strong> <i>Function</i></dt>
+				<dd>
+					<div class="possible-values">
+						<dl class="options"> 
+							<dt><strong>$obj</strong> <i>cQuery元素</i></dt>
+							<dd>要显示校验的元素<div class="possible-values">必填</div></dd>
+						</dl> 
+						<dl class="options">
+							<dt><strong> data</strong> <i>String</i></dt>
+							<dd>显示的内容<div class="possible-values">默认值为: <span>校验成功</span></div></dd>
+						</dl>
+						<dl class="options">
+							<dt><strong>showArrow</strong> <i>Boole</i></dt>
+							<dd>是否显示箭头<div class="possible-values">默认值为: <span>true</span></div></dd>
+						</dl>
+						<dl class="options">
+							<dt><strong>iframe</strong> <i>Boole</i></dt>
+							<dd>是否显示iframe <div class="possible-values">默认值为: <span>false</span></div></dd>
+						</dl>
+						<dl class="options">
+							<dt><strong>errorClass</strong> <i>String</i></dt>
+							<dd>获得焦点后元素的类 <div class="possible-values">默认值为: <span>f_error</span></div></dd>
+						</dl>
+						
+						<dl class="options">
+							<dt><strong>removeErrorClass</strong> <i>String</i></dt>
+							<dd>隐藏后是否取消红色框 <div class="possible-values">默认值为: <span>false</span></div></dd>
+						</dl>
+						
+						<dl class="options">
+							<dt><strong> position</strong> <i>String</i></dt>
+							<dd>显示的位置<div class="possible-values">默认值为: <span>"rm_lm"</span></div></dd>
+						</dl>
+						<dl class="options">
+							<dt><strong>hide</strong> <i>Function</i></dt>
+							<dd>隐藏时调用的函数<div class="possible-values">默认值为: <span>function () {}</span></div></dd>
+						</dl>
+						<dl class="options">
+							<dt><strong>show</strong> <i>Function</i></dt>
+							<dd>显示时调用的函数<div class="possible-values">默认值为: <span>function () {}</span></div></dd>
+						</dl>
+					</div>
+				</dd>
+			</dl>
+			<dl class="options">
+				<dt><strong>hide</strong> <i>Function</i></dt>
+			</dl>
+	</div>
+</div>
+
+<footer>
+	<module>validata</module>
+	<version>1.0</version>
+	<title>校验提示框</title>
+	<description>校验提示框</description>	
+</footer>
+</body>
+</html>

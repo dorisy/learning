@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>cquery地址选择器</title>
+</head>
+<body>
+<script src="http://webresource.c-ctrip.com/code/cquery/cQuery_110421.js"></script>
+<script type="text/javascript">
+	$.ready(function(){
+		//先加载地址选择器模块
+		$.mod.multiLoad({"address": "1.0"});
+		//再注册地址选择器模块
+		$('#homecity_name').regMod('address', '1.0', {
+			name: 'homecity_name',
+			jsonpSource: 'http://webresource.c-ctrip.com/code/cquery/resource/address/flight/flight_gb2312.js',
+			relate: {
+				'code': $("#homecity")
+			},message: {
+				suggestion: '请从下列城市选择'
+			}
+		});
+	});
+</script>
+<input id="homecity_name" type="text" value="" />
+<input id="homecity" type="hidden" value="" />
+</body>
+</html>

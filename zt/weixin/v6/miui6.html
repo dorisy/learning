@@ -1,0 +1,518 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MIUI6内测招募</title>
+  <script src="http://static.xiaomi.net/40367/scripts/miuimarket/jquery.1.7.1.min.js"></script>
+  <style>
+  html, body{ margin: 0; padding: 0; background: #fff;}
+  .logo{
+    position: absolute;
+    left: 50%;
+    width: 77px;
+    height: 61px;
+    margin-left: -418px;
+    background: url(http://static.bbs.miui.com/zt/weixin/v6/images/logo.png) 0 0;
+    z-index: 999;
+    top: 0;
+  }
+  html,body{ height: 100%; min-height: 600px; min-width: 727px; font-family: "Microsoft YaHei"}
+  .circle {
+    border: none;
+    position: absolute;           
+  }
+  button{ outline: none; background: transparent;border: 2px white solid; }
+  button:hover{
+    background: #ffd81f;
+    border: 2px solid #ffd81f;
+    color: #ff6e21;
+  }
+  #circle1{ background-color: #fcb200;  width: 304px;  height: 304px;  border-radius: 152px; left:776px; top:-120px; z-index:1; -webkit-animation: animation1 5s ease 0 infinite; } 
+  #circle2{ background-color: #ff6720;  width: 1074px;  height: 1074px;  border-radius: 537px;  opacity:0.95;filter:alpha(opacity=95); left:740px; top:-38px; z-index:5; -webkit-animation: animation2 5s ease 0 infinite; }
+  #circle3{ background-color: #f6cf19;  width: 950px;  height: 950px;  border-radius: 475px;  opacity:0.9;filter:alpha(opacity=90); left:1280px; top:-140px; z-index:4; -webkit-animation: animation3 5s ease 0 infinite;  }
+  #circle4{ background-color: #97df30;  width: 576px;  height: 576px;  border-radius: 288px; left:1580px; top:530px;  z-index:2; -webkit-animation: animation4 5s ease 0 infinite; } 
+  #circle5{ background-color: #d2ff00;  width: 1000px;  height: 1000px;  border-radius: 500px;  opacity:0.5;filter:alpha(opacity=50); left:1260px; top:596px; z-index:1; -webkit-animation: animation5 5s ease 0 infinite;  }
+  #circle6{ background-color: #ffeb0a;  width: 1000px;  height: 1000px;  border-radius: 500px;  opacity:0.8;filter:alpha(opacity=80); left:776px; top:576px; z-index:3; -webkit-animation: animation6 5s ease 0 infinite;  }
+  #circle7{ background-color: #19fffc;  width: 1000px;  height: 1000px;  border-radius: 500px;  opacity:0.9;filter:alpha(opacity=90); left:220px; top:650px; z-index:1; -webkit-animation: animation7 5s ease 0 infinite;  }
+  #circle8{ background-color: #00ccff;  width: 684px;  height: 684px;  border-radius: 342px; left:297px; top:396px; z-index:4; -webkit-animation: animation8 5s ease 0 infinite;  }
+  #circle9{ background-color: #eb2f4e;  width: 600px;  height: 600px;  border-radius: 300px;  opacity:0.95;filter:alpha(opacity=95); left:343px; top:-65px;  z-index:6; -webkit-animation: animation9 5s ease 0 infinite;  }
+  #circle10{ background-color: #97df30;  width: 120px;  height: 120px;  border-radius: 60px; left:2200px; top:618px; z-index:1; -webkit-animation: animation10 5s ease 0 infinite;  }
+  #circle11{ background-color: #00ccff;  width: 94px;  height: 94px;  border-radius: 46px; left:224px; top:386px; z-index:1; -webkit-animation: animation11 5s ease 0 infinite;  }
+  @-webkit-keyframes animation1 {
+    0%{
+      left:32%; top:-12%;
+    }
+    35%{
+      left:25%; top:-12%;
+    }
+    70%{
+      left:38%; top:-12%;
+    }
+    100%{
+      left:32%; top:-12%;
+    }
+  }
+  @-webkit-keyframes animation2 {
+    0%{
+      left:28%; top:-4%;
+    }
+    35%{
+      left:28%; top:-6%;
+    }
+    70%{
+      left:28%; top:-8%;
+    }
+    100%{
+      left:28%; top:-4%;
+    }
+  }
+  @-webkit-keyframes animation3 {
+    0%{
+      left:50%; top:-5%;
+    }
+    35%{
+      left:50%; top:-3%;
+    }
+    70%{
+      left:54%; top:-3%;
+    }
+    100%{
+      left:50%; top:-5%;
+    }
+  }
+   @-webkit-keyframes animation4 {
+    0%{
+      left:63%; top:36%;
+    }
+    35%{
+      left:63%; top:28%;
+    }
+    70%{
+      left:67%; top:32%;
+    }
+    100%{
+      left:63%; top:36%;
+    }
+  }
+   @-webkit-keyframes animation5 {
+    0%{
+      left:49%; top:29%;
+    }
+    35%{
+      left:49%; top:25%;
+    }
+    70%{
+      left:54%; top:29%;
+    }
+    100%{
+      left:49%; top:29%;
+    }
+  }
+   @-webkit-keyframes animation6 {
+    0%{
+      left:30%; top:29%;
+    }
+    35%{
+      left:30%; top:27%;
+    }
+    70%{
+      left:30%; top:25%;
+    }
+    100%{
+      left:30%; top:29%;
+    }
+  }
+  @-webkit-keyframes animation7 {
+    0%{
+      left:8.6%; top:30%;
+    }
+    35%{
+      left:8%; top:30%;
+    }
+    70%{
+      left:6.5%; top:32%;
+    }
+    100%{
+      left:8.6%; top:30%;
+    }
+  }
+  @-webkit-keyframes animation8 {
+    0%{
+      left:11.6%; top:18%;
+    }
+    60%{
+      left:11.6%; top:15%;
+    }
+    100%{
+      left:11.6%; top:18%;
+    }
+  }
+   @-webkit-keyframes animation9 {
+    0%{
+      left:13.4%; top:-5%;
+    }
+    35%{
+      left:13.4%; top:-8%;
+    }
+    70%{
+      left:13.4%; top:-5%;
+    }
+    100%{
+      left:13.4%; top:-5%;
+    }
+  }
+  @-webkit-keyframes animation10 {
+    0%{
+      left:87%; top:29%;
+    }
+    35%{
+      left:87%; top:34%;
+    }
+    70%{
+      left:92%; top:29%;
+    }
+    100%{
+      left:87%; top:29%;
+    }
+  }
+   @-webkit-keyframes animation11 {
+    0%{
+      left:8.7%; top:17%;
+    }
+    35%{
+      left:8.3%; top:21%;
+    }
+    70%{
+      left:9.5%; top:19%;
+    }
+    100%{
+      left:8.7%; top:17%;
+    }
+  }
+  .step{
+  height:690px;
+  width: 450px; 
+  min-width: 450px;
+  min-height: 522px;
+  *display: inline;
+  *zoom:1;
+  display: inline-block;
+  opacity:0;
+  -webkit-transition: opacity 3s ease,left 0.5s ease; 
+  transition: opacity 3s ease,left 0.5s ease;
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  z-index: 10;
+  }
+  #main{
+  height:690px;
+  width: 450px;
+  min-width: 450px;
+  min-height: 522px;
+  overflow: hidden;
+  border:none; 
+  white-space: nowrap;
+  position: absolute;
+  z-index: 10;
+  top:60px;
+  left: 50%;
+  margin-left: -225px;
+  }
+  ul{ margin: 0;padding: 0; position: relative; top:0px; }
+  ul li{ list-style: none; margin: 0 auto; text-align: center; padding: 0; }
+  #step1{ background:transparent; opacity: 1; padding: 0; left: 0;top: 59px; }
+  #step1 h1{ font-family: "Microsoft YaHei", 'SimSun'; font-size: 100px; color: white; margin-bottom: 14px; margin-top:0px; font-weight: normal;  }
+  #step1 h2{ font-family: "Microsoft YaHei",'SimSun'; font-size: 40px; color: white; margin-bottom: 22px; margin-top:0px; }
+  #step1 button{ font-family: "Microsoft YaHei",'SimSun'; font-size: 25px; position: relative; bottom:15px;   margin-top: 30px;  }
+  #step1 button img{ margin-top: 8px; display: inline-block; }
+  button{border-radius: 21px;background: transparent;border: 2px white solid;}
+  #step1 h4{ font-family: "Microsoft YaHei", 'SimSun'; font-size: 14px; font-weight: normal; color: white; margin-top: 0; opacity: 0.8; *filter: opacity(80);}
+  #step1 h4 a{ color: #fff; font-weight: normal; text-decoration: none; }
+  #step1 h4 a:hover{ text-decoration: underline;}
+  #signUp{ width: 228px; height: 43px; border-radius: 21px;  display:inline-block; vertical-align: middle; cursor: pointer; }
+  #step2{ background: transparent; left: 450px; }
+  #step2 h1{ font-family:  "Microsoft YaHei",'SimSun'; font-size: 90px; color: white; margin-top:0px; margin-bottom: 12px }
+  #step2 h3{ font-family:  "Microsoft YaHei",'SimSun'; font-size: 18px; color: white; margin-top:0px; margin-bottom: 12px }
+  #step2 h2{ font-family:  "Microsoft YaHei",'SimSun'; font-size: 30px; color: white; margin-top:0px; margin-bottom: 12px;position: relative; top:8px; }
+  .footer{ position: absolute;top: 550px;font-family: "Microsoft YaHei",'SimSun';font-size: 14px;color: white;opacity: 0.7;filter: opacity(70);font-weight: normal;left: 50%;margin-left: -35px;}
+  #MIUI img{ position: relative; top:10px;}
+  #step2 .nextStep{width: 154px;
+    height: 50px;
+    border-radius: 25px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: right;
+    padding-right: 21px;
+    float: right;
+  }
+  #step2 .nextStep img{
+    display: inline-block; margin-top: 5px;
+  }
+  #step3{ background: transparent; left: 900px; }
+  #step3 h1{ font-family: 'SimSun'; font-size: 70px; color: white; margin-top:0px; margin-bottom: 12px }
+  #step3 h3{ font-family: 'SimSun'; font-size: 14px; color: white; margin-top:0px; margin-bottom: 12px }
+  #step3 h2{ font-family: 'SimSun'; font-size: 26px; color: white; margin-top:0px; position: relative; }
+  #step3 h5{ font-family: 'SimSun'; font-size: 14px; color: white; }
+  #mobile{ text-align: center;border-radius: 10px; background:transparent; display:inline-block; margin-top: 0; }
+  #MIUI img{ position: relative; top:10px;}
+  #step3 li table tr{ height: 50px; line-height: 50px; }
+  #step3 li table tr td{ height: 50px; line-height: 50px; }
+  #contain{display: inline-block; margin-top: 0; margin-bottom: 40px;}
+  #step3 .nextStep{width: 208px; height: 50px; border-radius: 25px; display:inline-block; margin-top: 0; margin-bottom: 0; cursor: pointer; float: left; }
+  #step3 .nextStep img {}
+  .lastStep{width: 50px; height: 50px; border-radius: 27px; color: white; border:2px solid white; background: transparent; margin: 0; cursor: pointer; float: left; }
+  .lastStep img{
+    margin-top: 4px;
+  }
+  #step4{ background: transparent; padding-top: 10px; left: 1350px; }
+  #step4 ul li{ text-align: left; }
+  #step4 h1{ font-size: 18px; color: white; margin-top:0px; margin-bottom: 17px;}
+  #step4 h2{font-size: 14px; color: white; margin-top:0px;}
+  #step4_1,#step4_2{ margin-top: 0; margin-bottom: 30px;}
+  #step4_3{width: 50px; height: 50px; background: transparent; margin: 0 auto; margin-bottom: 16px; position: relative; top:9px; cursor: pointer;  }
+  #step4_3 div{ position: relative; top:15px; cursor: pointer; }
+  #special{padding-left: 16px;}
+  #step4 h5{ font-size: 12px; color: white; margin-top:10px;}
+
+  .btn-group{ width: 237px; margin: 30px auto 0; overflow: hidden;}
+  .user{ position: absolute; top: 10px; left: 50%; margin-left: 350px; z-index: 999;  color: #666;}
+  .user a{ color: #666; text-decoration: none; font-size: 14px;}
+  .user span{ opacity: 0.3; font-size: 12px; margin: 0 6px;}
+  .bg{
+    width: 100%;
+    height: 100%;
+    background: url(http://static.bbs.miui.com/zt/weixin/v6/images/bg.png) center 0 no-repeat;
+  }
+  #cicleWrap{
+    position: relative;
+    top: -50px;
+    height: 100%;
+  }
+  </style>
+</head>
+<body>
+  <a href="http://www.miui.com"><span class="logo"></span></a>
+<!--  <div class="user">
+        <a href="http://www.miui.com/member.php?mod=logging&action=miuilogin" class="login">登陆</a><span>|</span><a href="http://www.miui.com/member.php?mod=register" class="regist">注册</a>
+      </div>-->
+  <div id="cicleWrap">
+    <div class="circle" id="circle1"></div>
+    <div class="circle" id="circle2"></div>
+    <div class="circle" id="circle3"></div>
+    <div class="circle" id="circle4"></div>
+    <div class="circle" id="circle5"></div>
+    <div class="circle" id="circle6"></div>
+    <div class="circle" id="circle7"></div>
+    <div class="circle" id="circle8"></div>
+    <div class="circle" id="circle9"></div>
+    <div class="circle" id="circle10"></div>
+    <div class="circle" id="circle11"></div>
+  </div>
+
+    <div id="bg" class="bg" style="display:none">
+      
+    </div>
+
+   <div id="main">
+      <div class="step" id="step1">
+        <ul>
+          <li><div id="MIUI6"><img src="http://static.bbs.miui.com/zt/weixin/v6/images/1.png" width="247" height="154" /></div></li>
+          <li><button id="signUp"><img src="http://static.bbs.miui.com/zt/weixin/v6/images/start.png" alt="开始报名"></button></li>
+          <li><h4><a href="http://www.miui.com/zt/weixin/v6/baoming.php?op=search" target="_blank">结果查询</a></h4></li>
+          <li><h4>万人内测适配机型为小米4、小米3联通版<br>小米3电信版，其他机型也会很快的哦！<br> 
+          （在千人内测招募中已经报名的用户，
+          <br>报名仍然有效，不需要重复报名。）</span></h4></li>
+        </ul>
+      </div>
+      <div class="step" id="step2">
+        <ul>
+          <li><div id="MIUI"><img src="http://static.bbs.miui.com/zt/weixin/v6/images/2.png" width="339" height="390" /></div></li>
+          <li class="btn-group">
+            <button type="button" id="step2Prev" class="lastStep"><img src="images/left.png" width="12" height="13" alt="left"></button>
+            <button type="button" id="page2" class="nextStep"><img src="images/next.png" alt="下一步"></button>
+          </li>
+        </ul>
+      </div>
+      <div class="step" id="step3">
+        <ul>
+          <li><div id="mobile"><img src="http://static.bbs.miui.com/zt/weixin/v6/images/3.png" width="385" height="420" /></div></li>
+          <li>
+            <div id="contain">
+              <table>
+              <tr>
+                <td><button id="lastStep" class="lastStep"><img src="http://static.bbs.miui.com/zt/weixin/v6/images/left.png" width="12" height="13" alt="left"></button></td>
+                <td><button class="nextStep" id="page3" style="margin-left: 6px;"><img src="http://static.bbs.miui.com/zt/weixin/v6/images/next1.png" width="191" height="44" alt="left"></button></td>
+              </tr>
+              </table>
+            </div>            
+          </li>
+        </ul>
+      </div>
+      <div class="step" id="step4">
+        <div id="step4_1">
+          <ul>
+            <li><h1>加入内测后我可以做什么？<h1></li>
+
+            <li><h2>1.享有每周4次内测 OTA 权限</h2></li>
+            <li><h2>2.享有内测专区阅读权限</h2></li>
+            <li><h2>3.可与开发组零距离沟通</h2></li>
+            <li><h2>4.可优先被邀请参加大型庆典或大型活动</h2></li>
+            <li><h2>5.表现优秀者可以优先选入 MIUI 社区特殊组</h2></li>
+          </ul>
+        </div>
+        <div id="step4_2">
+          <ul>
+            <li><h1>内测期间的职责是什么？</h1></li>
+            <li><h2>1.每周升级内测 OTA 包，并进行测试</h2></li>
+            <li><h2>2.用心体验 MIUI ROM，提出不足和建议</h2></li>
+            <li><h2>3.对产品功能进行测评，优秀文章可以获得首页推荐</h2></li>
+            <li><h2>4.积极塑造和维护内测团队及 MIUI 社区的形象</h2></li>
+            <li><h2>5.在内测期间遵循保密协议，不泄露任何有关内测 ROM 的信息</h2></li>
+            <li><h2 id="special">（包含下载地址）</h2></li>
+          </ul>
+        </div>
+        <div id="step4_3"> <button id="page4" class="lastStep"><img src="http://static.bbs.miui.com/zt/weixin/v6/images/left.png" width="12" height="13" alt="left"></button></div>
+      </div> 
+       
+  <div>
+  <h5 class="footer">miui.com</h5>
+  <script type="text/javascript">
+    var isIE = !!window.ActiveXObject;
+    var steps = $(".step");
+    var initWidth = 2560;
+      
+    var oldLeft = [];
+    if(!isIE) {
+
+      var circles = document.querySelectorAll(".circle");
+      var lastHeight = [].map.call(steps,function(step){
+        return parseInt(getStyle(step)['height'],10);
+      });
+      var lastWidth = [].map.call(steps,function(step){
+        return parseInt(getStyle(step)['width'],10);
+      });
+      var lastRadius = [].map.call(circles, function(circle) {
+        return parseInt(getStyle(circle)['border-radius'], 10);
+      });
+      var lastLeft = [].map.call(circles, function(circle) {
+        return parseInt(getStyle(circle)['left'], 10);
+      });
+      var lastTop = [].map.call(circles, function(circle) {
+        return parseInt(getStyle(circle)['top'], 10);
+      });
+      var mainStep = document.querySelector("#main");
+      var mainHeight = parseInt(getStyle(mainStep)['height'],10);
+      var mainWidth = parseInt(getStyle(mainStep)['width'],10);
+
+      window.onresize = function() {
+         var curWidth = window.innerWidth; 
+         [].forEach.call(circles, function(circle, index) {
+          var radius = curWidth / initWidth * lastRadius[index];
+          circle.style.borderRadius = radius + "px";
+          circle.style.width = circle.style.height = radius * 2 + "px";
+          circle.style.left = curWidth / initWidth * lastLeft[index] + "px";
+          circle.style.top = curWidth / initWidth * lastTop[index] + "px";
+         });
+
+         
+            // mainStep.style.height = curWidth / initWidth * mainHeight + "px";
+            mainStep.style.width = curWidth / initWidth * mainWidth+ "px";
+          //  mainStep.style.left = curWidth/2 - 225 + "px";
+      };
+       window.onresize();
+    } else {
+      $("#cicleWrap").hide();
+      $("#bg").show();
+    }
+
+    function getStyle(elem) {
+      return elem.currentStyle? elem.currentStyle : window.getComputedStyle(elem, null);
+    }
+    $.each(steps, function(i, elem) {
+      oldLeft[i] = parseInt(getStyle(elem)['left'],10); 
+      console.log(oldLeft[i]);
+    })
+   
+     document.getElementById("signUp").onclick = function(){
+      for(var i = 0; i < steps.length; i++){
+               (function(){                  
+                    
+                      steps[i].style.left = oldLeft[i]-450 + "px";
+                      oldLeft[i] = oldLeft[i] - 450 ;
+                      steps[i].style.opacity = 1;
+                                                                                                
+               })(i);         
+       }
+          document.getElementById("step3").style.opacity = 0;
+          document.getElementById("step4").style.opacity = 0;
+      };
+      
+        document.getElementById("page2").onclick = function(){
+      for(var i = 0; i < steps.length; i++){
+               (function(){ 
+                    
+                      steps[i].style.left = oldLeft[i]-450 + "px";
+                      oldLeft[i] = oldLeft[i] - 450 ;
+                      steps[i].style.opacity = 1;
+                                                                                          
+               })(i);         
+       }
+
+          document.getElementById("step4").style.opacity = 0;
+      };
+        document.getElementById("page3").onclick = function(){
+      for(var i = 0; i < steps.length; i++){
+               (function(){            
+                    
+                      steps[i].style.left = oldLeft[i]-450 + "px";
+                      oldLeft[i] = oldLeft[i] - 450 ;
+                      steps[i].style.opacity = 1;
+                                                                                           
+               })(i);         
+       }
+               
+      };
+        document.getElementById("step2Prev").onclick = function(){
+      for(var i = 0; i < steps.length; i++){
+               (function(){ 
+
+                      steps[i].style.left = oldLeft[i]+450 + "px";
+                      oldLeft[i] = oldLeft[i] + 450 ;
+                      steps[i].style.opacity = 1;
+                                                                                                      
+               })(i);         
+       }
+           document.getElementById("step4").style.opacity = 0;      
+      };
+      document.getElementById("lastStep").onclick = function(){
+      for(var i = 0; i < steps.length; i++){
+               (function(){ 
+
+                      steps[i].style.left = oldLeft[i]+450 + "px";
+                      oldLeft[i] = oldLeft[i] + 450 ;
+                      steps[i].style.opacity = 1;
+                                                                                                      
+               })(i);         
+       }
+                 
+      };
+    document.getElementById("step4_3").onclick = function(){
+      for(var i = 0; i < steps.length; i++){
+               (function(){                 
+ 
+                      steps[i].style.left = oldLeft[i]+450 + "px";
+                      oldLeft[i] = oldLeft[i] + 450 ;
+                      steps[i].style.opacity = 1;
+                                                                                                      
+               })(i);         
+      }
+     
+  };
+  </script>
+<div style="display:none;">
+<script src="http://s17.cnzz.com/stat.php?id=2441309&web_id=2441309&show=pic" type="text/javascript" type="text/javascript"></script>
+</div>
+</body>
+</html>
