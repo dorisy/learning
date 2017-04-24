@@ -3,10 +3,168 @@
     <head>
         <meta charset="utf-8">
         <title>检测手机是否安装app</title>
+        <style type="text/css">
+          .list {
+              width: 80px;
+              position: absolute;
+              visibility: hidden;
+              border: 1px solid #ccc;
+              background: #fff;
+          }
+          .trigger {
+              display: inline-block;
+          }
+          .trigger:hover + .list,
+          .trigger:focus + .list {
+              visibility: visible;
+          }
+          .list a {
+              display: block;
+              padding: 5px 10px;
+              color: #333;
+          }
+          .outline {
+              outline: 1px dotted Highlight;
+              outline: 5px auto -webkit-focus-ring-color;
+          }
+        </style>
     </head>
-
+    <a href="javascript:" class="trigger" data-target="list">更多操作▾</a>
+    <div id="list" class="list">
+        <a href="javascript:">编辑</a>
+        <a href="javascript:">删除</a>
+    </div>
     <body>
        <script type="text/javascript">
+        (function (doc) {
+          if (doc.addEventListener) {
+            var keycode = {
+              37: 'left',
+              38: 'up',
+              39: 'right',
+              40: 'down',
+              13: 'enter',
+              9: 'tab'
+            };
+            // 键盘高亮类名
+            var className = 'outline';
+            // 高亮类名的添加与删除
+            var classList = {
+              add: function(ele) {
+                ele.className = ele.className + ' ' + className;
+              },
+              remove: function(ele) {
+                ele.className = ele.className.split(/\s+/).filter(function(cl) {
+                  if (cl != className) {
+                    return cl;
+                  }
+                }).join(' ');
+              },
+              removeAll: function() {
+                [].slice.call(doc.querySelectorAll('.' + className)).forEach(function(ele) {
+                  classList.remove(ele);
+                });
+              },
+              has: function(ele) {
+                return ele.className.split(/\s+/).filter(function(cl) {
+                  if (cl == className) {
+                    return cl;
+                  }
+                }).length > 0;
+              }
+            };
+
+            //键盘事件
+            doc.addEventListener('keydown', function(event) {
+              // 是否是上下左右键
+              var direction = keycode[event.keyCode];
+              if (!direction) {
+                return;
+              }
+              if (direction == 'tab') {
+                classList.removeAll();
+                return;
+              }
+              // 当前激活元素
+              var trigger = doc.activeElement;
+              if (!trigger) {
+                return;
+              }
+              // 对应的面板
+              var attrTarget = trigger.getAttribute('target') || trigger.getAttribute('data-target');
+              var target = attrTarget && doc.getElementById(attrTarget);
+              if (!target) {
+                return;
+              }
+              // 需要是显示状态
+              if (target.clientWidth == 0 && target.clientHeight == 0) {
+                return;
+              }
+              // 如果是回车事件
+              if (direction == 'enter') {
+                var eleFocus = target.querySelector('.' + className);
+                if (eleFocus) {
+                  // 阻止默认的回车
+                  event.preventDefault();
+                  eleFocus.click();
+                  return;
+                }
+              }
+              // 如果都符合，同时有目标子元素
+              var arrEleFocusable = target.storeFocusableEle,
+                index = target.storeIndexFocus;
+              if (!arrEleFocusable) {
+                arrEleFocusable = [].slice.call(target.querySelectorAll('a[href], button:not(:disabled), input:not(:disabled)'));
+                target.storeFocusableEle = arrEleFocusable;
+                target.storeIndexFocus = -1;
+                index = -1;
+              }
+              if (arrEleFocusable.length == 0) {
+                return;
+              }
+              // 先全部清除focus态
+              arrEleFocusable.forEach(function(ele) {
+                classList.remove(ele);
+              });
+              // 阻止默认的上下键滚屏
+              event.preventDefault();
+              // 索引加加减减
+              console.log("init Index:",index)
+              if (direction == 'left' || direction == 'up') {
+                index--;
+                if (index < 0) {
+                  index = -1;
+                }
+              } else if (direction == 'right' || direction == 'down') {
+                index++;
+                if (index > arrEleFocusable.length - 1) {
+                  index = arrEleFocusable.length ;
+                }
+              }
+              // 如果有对应的索引元素
+              if (arrEleFocusable[index]) {
+                // 高亮对应的控件元素
+                classList.add(arrEleFocusable[index]);
+                target.storeIndexFocus = index;
+              }else{//没有对应的索引元素,从第一个开始
+                classList.removeAll()
+                classList.add(arrEleFocusable[0])
+                target.storeIndexFocus = 0;
+              }
+              // 记录索引
+            });
+
+            doc.addEventListener('mousedown', function(event) {
+              var target = event.target;
+              if (target && !classList.has(target)) {
+                classList.removeAll();
+              }
+            });
+            doc.addEventListener('click', function(event) {
+              classList.removeAll();
+            });
+          }
+        })(document);
         var openApp = function(openUrl, callback) {
             //检查app是否打开
             function checkOpen(cb){
@@ -65,7 +223,7 @@
             }
             return json;
           }
-        openApp("mobilenotes://",function(data){alert(3)})
+        openApp("mobilenotes://")
        </script>
 
 
