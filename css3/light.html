@@ -9,6 +9,25 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
+		<style>
+        .outer{
+            border: 1px solid black;
+            width: 300px;
+            float: left;
+        }
+        .inner{
+            width: 50px;
+            height: 50px;
+            background-color: #ff4400;
+            margin-right: 20px;
+            float: left;
+        }
+        .footer{
+            background-color: #005FC3;
+            width: 200px;
+            height: 100px;
+        }
+    </style>
 	</head>
 	<body>
 		<h1>DEMO</h1>
@@ -20,5 +39,11 @@
 		        <div id="logosh"></div>
 			</div>
 		</div>
+		<div class="outer">
+	        <div class="inner"></div>
+	        <div class="inner"></div>
+	        <div class="inner"></div>
+	    </div>
+	    <div class="footer"></div>
 	</body>
 </html>

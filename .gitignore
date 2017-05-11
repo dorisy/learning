@@ -3,4 +3,5 @@ node_modules
 riot/node_modules
 vue/node_modules
 websocket/node_modules
+blog/node_modules
 /*.log
